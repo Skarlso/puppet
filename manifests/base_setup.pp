@@ -25,7 +25,7 @@ class base::skype {
         }
  
         exec { "update-and-install":
-                command => "/usr/bin/apt-get update &amp;&amp; /usr/bin/apt-get install skype",
+                command => "/usr/bin/apt-get update && /usr/bin/apt-get install skype",
                 require => Exec['add-repo-skype'],
         }
 }
@@ -34,11 +34,11 @@ class base::java8 {
         # Automatically does an update afterwards
         # apt::ppa { 'ppa:webupd8team/java': }
         exec { "add-repo-java":
-                command => "/usr/bin/add-apt-repository -y \"ppa:webupd8team/java\" &amp;&amp; /usr/bin/apt-get update"
+                command => "/usr/bin/add-apt-repository -y \"ppa:webupd8team/java\" && /usr/bin/apt-get update"
         }
  
         exec { "set-accept":
-                command => "/bin/echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections &amp;&amp; /bin/echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 seen true | sudo /usr/bin/debconf-set-selections",
+                command => "/bin/echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && /bin/echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 seen true | sudo /usr/bin/debconf-set-selections",
                 require => Exec['add-repo-java'],
         }
  
